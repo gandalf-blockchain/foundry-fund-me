@@ -23,18 +23,17 @@ contract FundMeTest is Test {
     }
 
     function testPriceFeedVersionIsAccurate() public {
-    uint256 version = fundMe.getVersion();
+        uint256 version = fundMe.getVersion();
 
-    if (block.chainid == 11155111) {
-        // Sepolia
-        assertEq(version, 4);
-    } else if (block.chainid == 1) {
-        // Mainnet
-        assertEq(version, 6);
-    } else {
-        // Anvil / local / mock
-        assertTrue(version > 0);
+        if (block.chainid == 11155111) {
+            // Sepolia
+            assertEq(version, 4);
+        } else if (block.chainid == 1) {
+            // Mainnet
+            assertEq(version, 6);
+        } else {
+            // Anvil / local / mock
+            assertTrue(version > 0);
+        }
     }
-}
-
 }
